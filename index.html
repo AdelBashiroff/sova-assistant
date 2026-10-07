@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сова — ИИ-администратор, который записывает клиентов ночью</title>
+    <meta name="description" content="Сова отвечает клиентам салона в чате в любое время, уточняет детали и ставит запись в расписание. Попробуйте поговорить с ней прямо на странице.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="nav" id="nav">
+        <div class="container nav-inner">
+            <a href="#top" class="logo" aria-label="Сова — на главную">
+                <span class="logo-mark" aria-hidden="true"><i></i><i></i></span>Сова
+            </a>
+            <nav class="nav-links" aria-label="Основная навигация">
+                <a href="#how">Как работает</a>
+                <a href="#demo">Демо</a>
+                <a href="#skills">Умеет</a>
+                <a href="#calc">Калькулятор</a>
+                <a href="#pricing">Цены</a>
+                <a href="#faq">Вопросы</a>
+            </nav>
+            <a href="#demo" class="btn btn-small">Написать Сове</a>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="eyebrow">ИИ-администратор для салонов и студий</span>
+                    <h1>Клиенты пишут ночью. <span class="hl">Сова записывает.</span></h1>
+                    <p class="lead">
+                        Отвечает в Telegram и на сайте за секунды, называет цены, находит свободное время
+                        и ставит запись в календарь. Утром вы просто открываете расписание.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#demo" class="btn">Поговорить с Совой</a>
+                        <a href="#calc" class="btn btn-ghost">Сколько стоит молчание</a>
+                    </div>
+                    <ul class="hero-facts">
+                        <li><b>24/7</b> без выходных и обеда</li>
+                        <li><b>3 дня</b> на запуск «под ключ»</li>
+                    </ul>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="night-chat">
+                        <div class="night-top"><span class="night-time">02:14</span><span class="night-pill">Студия закрыта</span></div>
+                        <div class="bubble user">Хочу на маникюр в субботу после обеда</div>
+                        <div class="bubble bot">В субботу свободно 13:00 и 15:00. Какое время удобно?</div>
+                        <div class="bubble user">Давайте 15</div>
+                        <div class="bubble bot">Записала: маникюр, суббота, 15:00. Напомню за 2 часа.</div>
+                        <div class="night-done"><span class="dot"></span>Запись создана · мастеру ушло уведомление</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как работает -->
+        <section class="section" id="how">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Как это устроено</h2>
+                    <p>Не меню с кнопками, а живой диалог. Сова понимает обычные фразы и спрашивает только то, чего не хватает.</p>
+                </div>
+                <ol class="steps">
+                    <li class="step">
+                        <span class="step-num">1</span>
+                        <h3>Клиент пишет как умеет</h3>
+                        <p>«Хочу на стрижку завтра вечером» — этого уже достаточно, чтобы Сова поняла услугу, день и примерное время.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-num">2</span>
+                        <h3>Сова уточняет и сверяется</h3>
+                        <p>Смотрит в расписание, предлагает свободные окна, спрашивает имя. Цены и адрес берёт из вашей базы знаний, а не выдумывает.</p>
+                    </li>
+                    <li class="step">
+                        <span class="step-num">3</span>
+                        <h3>Запись и передача человеку</h3>
+                        <p>Запись попадает в календарь, мастеру приходит уведомление. Жалобу или сложный вопрос Сова передаёт администратору.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Демо -->
+        <section class="section section-dark" id="demo">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Попробуйте сами</h2>
+                    <p>
+                        Вы — клиент студии «Лотос». Напишите своими словами или нажмите подсказку.
+                        Справа видно, что Сова поняла и куда легла запись.
+                    </p>
+                </div>
+
+                <div class="demo">
+                    <div class="chat" aria-label="Чат с Совой">
+                        <div class="chat-head">
+                            <span class="avatar" aria-hidden="true"><i></i><i></i></span>
+                            <div class="chat-title">
+                                <b>Сова</b>
+                                <small>администратор студии «Лотос» · онлайн</small>
+                            </div>
+                            <button type="button" class="reset" id="reset">Начать заново</button>
+                        </div>
+                        <div class="messages" id="messages" role="log" aria-live="polite"></div>
+                        <div class="chips" id="chips"></div>
+                        <form class="composer" id="composer" autocomplete="off">
+                            <label class="sr-only" for="input">Сообщение</label>
+                            <input id="input" type="text" maxlength="160" placeholder="Например: запишите на стрижку в пятницу в 15" enterkeyhint="send">
+                            <button type="submit" class="send" id="send" aria-label="Отправить">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <aside class="side">
+                        <div class="panel">
+                            <h3>Что поняла Сова</h3>
+                            <dl class="facts">
+                                <div><dt>Намерение</dt><dd id="intent">Ждёт сообщение</dd></div>
+                                <div><dt>Источник ответа</dt><dd id="source">—</dd></div>
+                            </dl>
+                            <ul class="slots" id="slots">
+                                <li data-slot="service"><span>Услуга</span><b>—</b></li>
+                                <li data-slot="date"><span>День</span><b>—</b></li>
+                                <li data-slot="time"><span>Время</span><b>—</b></li>
+                                <li data-slot="name"><span>Имя</span><b>—</b></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel">
+                            <h3>Расписание: <span id="sched-date">сегодня</span></h3>
+                            <div class="sched" id="sched" aria-label="Свободное время"></div>
+                            <div class="legend">
+                                <span><i class="lg free"></i>свободно</span>
+                                <span><i class="lg busy"></i>занято</span>
+                                <span><i class="lg mine"></i>ваша запись</span>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <h3>Журнал записей</h3>
+                            <ul class="journal" id="journal">
+                                <li class="empty">Пока пусто. Запишитесь через чат.</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+
+                <p class="demo-note">
+                    Демо работает в браузере по заданным правилам и ничего никуда не отправляет.
+                    В реальном проекте подключается языковая модель, ваш календарь и ваша база знаний.
+                </p>
+            </div>
+        </section>
+
+        <!-- Что умеет -->
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Что Сова берёт на себя</h2>
+                    <p>Всё, на что администратор тратит день, но что не требует человеческого решения.</p>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <span class="card-ico" aria-hidden="true">📅</span>
+                        <h3>Запись и перенос</h3>
+                        <p>Находит окно, учитывает занятое время, записывает и по просьбе отменяет или переносит.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-ico" aria-hidden="true">💬</span>
+                        <h3>Ответы по базе знаний</h3>
+                        <p>Цены, адрес, график, подготовка к процедуре. Отвечает только тем, что вы в неё внесли.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-ico" aria-hidden="true">⏰</span>
+                        <h3>Напоминания</h3>
+                        <p>Пишет клиенту за сутки и за два часа до визита. Меньше «забыла» и пустых окон.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-ico" aria-hidden="true">🙋</span>
+                        <h3>Передача человеку</h3>
+                        <p>Жалобы, нестандартные просьбы и вопросы вне базы уходят администратору с готовой сводкой диалога.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-ico" aria-hidden="true">🔔</span>
+                        <h3>Уведомления мастерам</h3>
+                        <p>Новая запись сразу приходит мастеру в Telegram: кто, на что, во сколько.</p>
+                    </article>
+                    <article class="card">
+                        <span class="card-ico" aria-hidden="true">📈</span>
+                        <h3>Отчёт раз в неделю</h3>
+                        <p>Сколько записей создано ночью, о чём спрашивали чаще всего и где Сове не хватило знаний.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section class="section section-dark" id="calc">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Сколько стоит молчание</h2>
+                    <p>Прикиньте, сколько записей уходит, пока никто не отвечает. Цифры ваши, расчёт простой.</p>
+                </div>
+
+                <div class="calc">
+                    <div class="calc-inputs">
+                        <label class="field">
+                            <span>Сообщений в неделю приходит вне рабочего времени <b id="o-msgs">25</b></span>
+                            <input type="range" id="in-msgs" min="5" max="100" step="1" value="25">
+                        </label>
+                        <label class="field">
+                            <span>Из них не дожидаются ответа и уходят <b id="o-share">40%</b></span>
+                            <input type="range" id="in-share" min="10" max="80" step="5" value="40">
+                        </label>
+                        <label class="field">
+                            <span>Средний чек <b id="o-check">3 000 ₽</b></span>
+                            <input type="range" id="in-check" min="500" max="15000" step="100" value="3000">
+                        </label>
+                    </div>
+
+                    <div class="calc-result" aria-live="polite">
+                        <div class="res-main">
+                            <small>Теряется в месяц</small>
+                            <b id="r-lost">—</b>
+                            <span id="r-lost-n">—</span>
+                        </div>
+                        <div class="res-row">
+                            <div><small>Сова вернёт около</small><b id="r-back">—</b></div>
+                            <div><small>Окупится за</small><b id="r-payback">—</b></div>
+                        </div>
+                        <p class="res-note" id="r-note"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Цены -->
+        <section class="section" id="pricing">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Пакеты</h2>
+                    <p>Запуск разовый, поддержка помесячно. Без договоров на год.</p>
+                </div>
+                <div class="plans">
+                    <article class="plan">
+                        <h3>Старт</h3>
+                        <div class="price">14 900 ₽<small>разово</small></div>
+                        <ul>
+                            <li>Один канал: Telegram</li>
+                            <li>Ответы на вопросы по вашей базе знаний</li>
+                            <li>Приём заявок на запись в таблицу</li>
+                            <li>Передача сложных вопросов администратору</li>
+                        </ul>
+                        <a href="#demo" class="btn btn-ghost">Выбрать</a>
+                    </article>
+                    <article class="plan plan-main">
+                        <span class="badge">Чаще берут</span>
+                        <h3>Салон</h3>
+                        <div class="price">29 900 ₽<small>разово + 3 900 ₽/мес</small></div>
+                        <ul>
+                            <li>Telegram и виджет на сайте</li>
+                            <li>Живой календарь: свободные окна и мастера</li>
+                            <li>Напоминания клиентам и уведомления мастерам</li>
+                            <li>Перенос и отмена записи</li>
+                            <li>Еженедельный отчёт</li>
+                        </ul>
+                        <a href="#demo" class="btn">Выбрать</a>
+                    </article>
+                    <article class="plan">
+                        <h3>Сеть</h3>
+                        <div class="price">от 59 900 ₽<small>разово + по договорённости</small></div>
+                        <ul>
+                            <li>Несколько филиалов и каналов</li>
+                            <li>Интеграция с вашей CRM</li>
+                            <li>Свои сценарии и фирменный тон ответов</li>
+                            <li>Приоритетная поддержка</li>
+                        </ul>
+                        <a href="#demo" class="btn btn-ghost">Обсудить</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section-dark" id="faq">
+            <div class="container narrow">
+                <div class="section-head">
+                    <h2>Частые вопросы</h2>
+                </div>
+                <details class="faq">
+                    <summary>Сова может ошибиться или соврать клиенту?</summary>
+                    <p>Цены, адрес и график она берёт только из вашей базы знаний. Если ответа там нет, она не придумывает, а честно говорит об этом и зовёт администратора.</p>
+                </details>
+                <details class="faq">
+                    <summary>Клиенты поймут, что говорят с ботом?</summary>
+                    <p>Сова представляется администратором-ассистентом и не прячется. По опыту, людям важнее быстрый и точный ответ, чем то, кто его дал.</p>
+                </details>
+                <details class="faq">
+                    <summary>С каким календарём она работает?</summary>
+                    <p>Google Календарь, таблица или ваша CRM. Если ничего этого нет, заведу простой календарь, который открывается с телефона.</p>
+                </details>
+                <details class="faq">
+                    <summary>Что будет, если Сова не поймёт клиента?</summary>
+                    <p>Переспросит один раз. Если снова не получилось, передаст диалог администратору с краткой сводкой, чтобы клиенту не пришлось повторять.</p>
+                </details>
+                <details class="faq">
+                    <summary>Можно ли настроить тон общения?</summary>
+                    <p>Да. В пакете «Сеть» тон подгоняется под ваш бренд, в остальных есть вежливый нейтральный стиль.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section cta">
+            <div class="container">
+                <h2>Пусть утром вас ждёт <span class="hl">полное расписание</span></h2>
+                <p>Расскажите про вашу студию — покажу, как Сова будет отвечать именно вашим клиентам.</p>
+                <a href="#demo" class="btn">Ещё раз попробовать демо</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span>© 2026 Сова. Демонстрационный проект.</span>
+            <span>Студия «Лотос» и все данные в демо вымышленные.</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
